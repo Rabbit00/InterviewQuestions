@@ -1,0 +1,1 @@
+flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto
