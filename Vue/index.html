@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue简易实现</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <input v-model="name">
+        <h1 id="name">{{name}}</h1>
+        <button v-on:click="clickMe">click me</button>
+    </div>
+</body>
+<script src="observer.js"></script>
+<script src="watcher.js"></script>
+<script>
+    var obj = {}
+    // Object.defineProperty(obj, 'prop', {
+    //     get: function () {
+            // if (Dep.target) {  // 判断是否需要添加订阅者
+            //     dep.addSub(Dep.target); // 在这里添加一个订阅者
+            // }
+    //         return val
+    //     },
+    //     set: function (newValue) {
+    //         document.getElementById('name').innerHTML = newValue
+            // dep.notify(); // 如果数据变化，通知所有订阅者
+    //     }
+    // })
+    // ！！注意参数
+    var obj1 = new Proxy(obj, {
+        // target就是第一个参数obj, receive就是返回的obj(返回的proxy对象)
+        get: function (target, key, receive) {
+            return target[key]
+        },
+        set: function (target, key, newVal, receive) {
+            // 执行赋值操作
+            target[key] = newVal
+            document.getElementById('name').innerHTML = target[key]
+        }
+    })
+    document.addEventListener('keyup', function (e) {
+        obj1[0] = e.target.value
+    })
+    // vue2.x中不能监测到数组下标的变化
+    // proxy可以劫持整个对象，并返回一个新对象
+    // Vue2.x中new出的实例对象，所有的东西都在这个vue对象上，这样其实无论你用到还是没用到，都会跑一变。
+    // vue3.0中可以用ES module imports按需引入，如：keep-alive内置组件、v-model指令，等等
+
+    // var fragment = document.createDocumentFragment()
+</script>
+</html>

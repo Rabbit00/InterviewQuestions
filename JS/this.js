@@ -1,4 +1,6 @@
-// 请说明要输出正确的myName的值要如何修改程序?
+/**
+ * 请说明要输出正确的myName的值要如何修改程序?
+ */
 foo = function(){
     this.myName = "Foo function.";
 }
@@ -16,7 +18,9 @@ foo.prototype.bar = function(){
 }
 var f = new foo;
 f.bar();
-
+/**
+ * 读代码
+ */
 var myObject = {
     foo: "bar",
     func: function() {
@@ -30,4 +34,4 @@ var myObject = {
     }
   };
 myObject.func();
-// bar undefined undefined undefined
+// bar bar undefined bar
