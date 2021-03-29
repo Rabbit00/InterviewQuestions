@@ -37,12 +37,21 @@ let a = 'global'
 console.log(this.a) // 浏览器环境中，undefined
 ```
 
-### const 常量
-1. 必须先赋值，绑定值之后不能再修改
-2. 不支持预解析
+### const 常量 常量的值是无法（通过重新赋值）改变, 不能被重新声明
+1. 常量需要一个初始值
 ```
+const a // Uncaught SyntaxError
+```
+2. 常量定义为对象或者数组时，可以修改属性
+```
+const a = {b: 2}
+a.b = 3
+console.log(a) \\ {b: 3}
+```
+3. 块级作用域，不支持预解析
+```
+console.log(a) // ReferenceError
 const a = 2
-console.log(a)
 ```
 
 
