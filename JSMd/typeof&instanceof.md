@@ -50,3 +50,11 @@ Javascript实例对象上均有一个隐式的proto对象
     Function instanceof Object // true
     Object instanceof Function // true
 ```
+```
+    function fn () {
+        return fn
+    }
+    new fn() instanceof fn
+```
+
+# == 和 ===

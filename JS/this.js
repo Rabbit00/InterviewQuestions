@@ -17,7 +17,7 @@ foo.prototype.bar = function(){
     })(this),1000);
 }
 var f = new foo;
-f.bar();
+// f.bar();
 /**
  * 读代码
  */
@@ -33,5 +33,24 @@ var myObject = {
       }());
     }
   };
-myObject.func();
+// myObject.func();
 // bar bar undefined bar
+
+function fn () {
+    this.a = 2
+    return 1
+}
+let test1 = new fn()
+console.log(test1)
+console.log(test1.constructor)
+
+function fn1 () {
+    this.a = 2
+    return {
+        a: 1
+    }
+}
+
+let test2 = new fn1()
+console.log(test2)
+console.log(test2.constructor)
